@@ -1,0 +1,35 @@
+<div class="switch" (click)="changeMode()">
+  <i class="bi bi-lightbulb"></i>
+</div>
+
+<div
+  class="container"
+  [ngStyle]="{
+    'background-color': mode.bg_container,
+    'border-color': mode.border_container
+  }"
+>
+  <p class="title">Wagner Caetano</p>
+  <img src="./../assets/profile-2.jpeg" alt="" />
+  <p class="subtitle">Fullstack Developer</p>
+
+  <div class="card-wrapper">
+    <div
+      class="card"
+      (mouseover)="hover = i"
+      (mouseleave)="hover = -1"
+      [ngStyle]="
+        hover === i
+          ? { 'background-color': mode.hover_card }
+          : { 'background-color': mode.card }
+      "
+      *ngFor="let link of links; let i = index"
+      (click)="navigate(link.url)"
+    >
+      <i class="bi bi-{{ link.name }}"></i>
+      <p>{{ link.description }}</p>
+    </div>
+  </div>
+</div>
+
+<p class="copyright">© 2023 Copyright: Wagner Caetano</p>

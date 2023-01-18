@@ -1,0 +1,131 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+}
+
+.switch {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.container {
+  align-self: center;
+  justify-self: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  width: auto;
+  min-width: 50vw;
+  max-width: 80vw;
+
+  border: 2px solid;
+  border-radius: 1rem;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 4rem;
+  width: auto;
+  padding: 1rem;
+}
+
+.subtitle {
+  font-size: 32px;
+  font-weight: 100;
+  font-style: italic;
+  padding: 2rem !important;
+}
+
+img {
+  min-width: 40vw;
+  width: fit-content;
+  max-width: 70vw;
+  border-radius: 30px;
+  padding: 1rem;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  padding: 1rem 2rem 1rem 2rem;
+  flex-direction: row;
+  gap: 1rem;
+  border-radius: 2rem;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: auto;
+  transition: 0.2s background-color ease-out 100ms;
+  cursor: pointer;
+}
+
+.card p {
+  font-size: 24px;
+  align-self: center;
+  justify-self: center;
+  letter-spacing: 0.5rem;
+  padding-right: 1rem !important;
+}
+
+i {
+  align-self: center;
+  justify-self: center;
+  font-size: 50px;
+}
+
+.copyright {
+  text-align: center;
+  padding: 2rem !important;
+}
+
+@media only screen and (min-width: 768px) {
+  img {
+    min-width: 13vw;
+    width: fit-content;
+    max-width: 13vw;
+    border-radius: 2rem;
+    padding: 1rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    width: auto;
+    min-width: 30vw;
+    max-width: 30vw;
+
+    border: 2px solid rgb(58, 58, 58);
+    border-radius: 1rem;
+  }
+
+  .card i {
+    justify-self: flex-end;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .card {
+    gap: 6rem;
+  }
+}
