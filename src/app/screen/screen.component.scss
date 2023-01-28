@@ -95,11 +95,11 @@ i {
   padding: 2rem !important;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 900px) {
   img {
     min-width: 13vw;
     width: fit-content;
-    max-width: 13vw;
+    max-width: 15vw;
     border-radius: 2rem;
     padding: 1rem;
   }

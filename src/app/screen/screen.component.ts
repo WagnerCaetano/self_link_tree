@@ -1,18 +1,18 @@
 import { DOCUMENT } from '@angular/common';
 import {
   Component,
-  ElementRef,
-  EventEmitter,
   Inject,
-  Output,
 } from '@angular/core';
+import { VanillaTiltSettings } from 'angular-tilt/lib/angular-tilt-settings.model';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ModalComponent } from '../modal/modal.component';
 
 const light = {
   text: '#1c1c1c',
-  bg_container: 'rgb(197, 197, 197, 0.8)',
-  border_container: 'rgb(197, 197, 197)',
+  bg_container: 'rgb(197, 197, 197, 0.4)',
+  border_container: 'rgb(190, 190, 190)',
   card: 'rgb(176, 176, 176, 0.6)',
-  hover_card: 'rgb(150, 150, 150, 0.4)',
+  hover_card: 'rgb(150, 150, 150, 0.8)',
   background:
     'linear-gradient(70deg,rgba(240, 253, 253, 1) 10%,rgba(240, 235, 235, 1) 60%)',
 };
@@ -30,12 +30,14 @@ const dark = {
 @Component({
   selector: 'app-screen',
   templateUrl: './screen.component.html',
-  styleUrls: ['./screen.component.css'],
+  styleUrls: ['./screen.component.scss'],
 })
 export class ScreenComponent {
   title = 'self_link_tree';
-  mode = dark;
+  mode = light;
   hover = -1;
+  tiltSettings: VanillaTiltSettings = {transition: true}
+  modalRef!: MdbModalRef<ModalComponent>;
 
   links = [
     {
@@ -46,23 +48,27 @@ export class ScreenComponent {
     {
       description: 'Portfolio',
       name: 'person-badge',
-      url: 'https://www.linkedin.com/in/wagner-caetano/',
+      url: 'modal',
     },
     {
       description: 'Hire Me',
       name: 'card-text',
-      url: 'https://www.linkedin.com/in/wagner-caetano/',
+      url: 'https://www.freelancer.com/u/wagnercaetano01',
     },
   ];
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private modalService: MdbModalService) {}
 
   ngOnInit(): void {
     this.loadMode();
   }
 
   navigate(url: string) {
-    this.document.location.href = url;
+    if(url == 'modal') {
+      this.modalRef = this.modalService.open(ModalComponent);
+    } else {
+      this.document.location.href = url;
+    }
   }
 
   changeMode() {
@@ -72,6 +78,10 @@ export class ScreenComponent {
       this.mode = dark;
     }
     this.loadMode();
+  }
+
+  openModal() {
+    this.modalRef = this.modalService.open(ModalComponent)
   }
 
   loadMode() {
