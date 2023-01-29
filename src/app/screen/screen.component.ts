@@ -34,27 +34,34 @@ const dark = {
 })
 export class ScreenComponent {
   title = 'self_link_tree';
-  mode = light;
+  mode = dark;
   hover = -1;
-  tiltSettings: VanillaTiltSettings = {transition: true}
+  window = window;
+  tiltSettings: VanillaTiltSettings = {transition: true};
   modalRef!: MdbModalRef<ModalComponent>;
 
   links = [
+    {
+      description: 'Construa seu sonho',
+      name: 'tools',
+      url: 'https://www.wagnercaetano.com/agency',
+    },
+    {
+      description: 'Meu resume',
+      name: 'person-badge',
+      url: 'https://www.wagnercaetano.com/resume',
+    },
     {
       description: 'Linkedin',
       name: 'linkedin',
       url: 'https://www.linkedin.com/in/wagner-caetano/',
     },
     {
-      description: 'Portfolio',
-      name: 'person-badge',
-      url: 'modal',
-    },
-    {
-      description: 'Hire Me',
+      description: 'Freelancer',
       name: 'card-text',
       url: 'https://www.freelancer.com/u/wagnercaetano01',
     },
+    
   ];
 
   constructor(@Inject(DOCUMENT) private document: Document, private modalService: MdbModalService) {}

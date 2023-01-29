@@ -4,10 +4,14 @@
 
 <div
   class="container"
-  [ngStyle]="{
-    'background-color': mode.bg_container,
-    'border-color': mode.border_container
-  }"
+  [ngStyle]="
+    window.innerWidth > 900
+      ? {
+          'background-color': mode.bg_container,
+          'border-color': mode.border_container
+        }
+      : {}
+  "
   aTilt
   [tiltSettings]="tiltSettings"
 >
@@ -33,5 +37,3 @@
     </div>
   </div>
 </div>
-
-<p class="copyright">© 2023 Copyright: Wagner Caetano</p>
