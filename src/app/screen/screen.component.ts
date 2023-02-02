@@ -42,7 +42,7 @@ export class ScreenComponent {
 
   links = [
     {
-      description: 'Construa seu sonho',
+      description: 'Construa seu site',
       name: 'tools',
       url: 'https://www.wagnercaetano.com/agency',
     },
@@ -60,6 +60,16 @@ export class ScreenComponent {
       description: 'Freelancer',
       name: 'card-text',
       url: 'https://www.freelancer.com/u/wagnercaetano01',
+    },
+    {
+      description: 'Instagram',
+      name: 'instagram',
+      url: 'https://www.instagram.com/wagnercaetano.dev/',
+    },
+    {
+      description: 'Youtube',
+      name: 'youtube',
+      url: 'https://www.youtube.com/@wagnercaetanodev/videos',
     },
     
   ];
