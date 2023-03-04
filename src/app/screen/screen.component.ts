@@ -3,9 +3,11 @@ import {
   Component,
   Inject,
 } from '@angular/core';
-import { VanillaTiltSettings } from 'angular-tilt/lib/angular-tilt-settings.model';
+import { Gtag } from 'angular-gtag';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalComponent } from '../modal/modal.component';
+
+declare var gtag: any;
 
 const light = {
   text: '#1c1c1c',
@@ -37,14 +39,13 @@ export class ScreenComponent {
   mode = dark;
   hover = -1;
   window = window;
-  tiltSettings: VanillaTiltSettings = {transition: true};
   modalRef!: MdbModalRef<ModalComponent>;
 
   links = [
     {
       description: 'Construa seu site',
       name: 'tools',
-      url: 'https://www.wagnercaetano.com/agency',
+      url: 'https://www.wagnercaetano.com/agencia',
     },
     {
       description: 'Meu resume',
@@ -74,7 +75,7 @@ export class ScreenComponent {
     
   ];
 
-  constructor(@Inject(DOCUMENT) private document: Document, private modalService: MdbModalService) {}
+  constructor(@Inject(DOCUMENT) private document: Document, private modalService: MdbModalService, private gtag: Gtag) {}
 
   ngOnInit(): void {
     this.loadMode();
@@ -84,6 +85,7 @@ export class ScreenComponent {
     if(url == 'modal') {
       this.modalRef = this.modalService.open(ModalComponent);
     } else {
+      this.gtag.event('click_link', { url });
       this.document.location.href = url;
     }
   }

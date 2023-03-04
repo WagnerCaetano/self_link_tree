@@ -12,12 +12,10 @@
         }
       : {}
   "
-  aTilt
-  [tiltSettings]="tiltSettings"
 >
-  <p class="title">Wagner Caetano</p>
-  <img src="./../assets/profile-2.jpeg" alt="" />
-  <p class="subtitle">Fullstack Developer</p>
+  <h1 class="title">Wagner Caetano</h1>
+  <img src="https://wagnercaetano.com/wp-content/uploads/data/profile.jpg" alt="" />
+  <h2 class="subtitle">Fullstack Developer</h2>
 
   <div class="card-wrapper">
     <div
@@ -31,6 +29,7 @@
       "
       *ngFor="let link of links; let i = index"
       (click)="navigate(link.url)"
+      onclick="dataLayer.push('event', 'click_link', {'url': $event})"
     >
       <i class="bi bi-{{ link.name }}"></i>
       <p>{{ link.description }}</p>
