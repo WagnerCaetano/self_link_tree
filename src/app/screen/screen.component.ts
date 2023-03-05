@@ -3,13 +3,15 @@ import {
   Component,
   Inject,
 } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Gtag } from 'angular-gtag';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { selectedLanguage } from '../dropdown/dropdown.component';
 import { ModalComponent } from '../modal/modal.component';
 
 declare var gtag: any;
 
-const light = {
+export const light = {
   text: '#1c1c1c',
   bg_container: 'rgb(197, 197, 197, 0.4)',
   border_container: 'rgb(190, 190, 190)',
@@ -19,7 +21,7 @@ const light = {
     'linear-gradient(70deg,rgba(240, 253, 253, 1) 10%,rgba(240, 235, 235, 1) 60%)',
 };
 
-const dark = {
+export const dark = {
   text: '#e3e3e3',
   bg_container: 'rgb(58, 58, 58, 0.2)',
   border_container: 'rgb(58, 58, 58)',
@@ -43,12 +45,12 @@ export class ScreenComponent {
 
   links = [
     {
-      description: 'Construa seu site',
+      description: 'LINKS_HOME.BUILD_YOUR_SITE',
       name: 'tools',
       url: 'https://www.wagnercaetano.com/agencia',
     },
     {
-      description: 'Meu resume',
+      description: 'LINKS_HOME.MY_RESUME',
       name: 'person-badge',
       url: 'https://www.wagnercaetano.com/resume',
     },
@@ -72,17 +74,25 @@ export class ScreenComponent {
       name: 'youtube',
       url: 'https://www.youtube.com/@wagnercaetanodev/videos',
     },
-    
   ];
 
-  constructor(@Inject(DOCUMENT) private document: Document, private modalService: MdbModalService, private gtag: Gtag) {}
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private modalService: MdbModalService,
+    private gtag: Gtag,
+    private translate: TranslateService
+  ) {
+    translate.setDefaultLang('en');
+    translate.addLangs(['en', 'pt']);
+    translate.use('en');
+  }
 
   ngOnInit(): void {
     this.loadMode();
   }
 
   navigate(url: string) {
-    if(url == 'modal') {
+    if (url == 'modal') {
       this.modalRef = this.modalService.open(ModalComponent);
     } else {
       this.gtag.event('click_link', { url });
@@ -100,12 +110,17 @@ export class ScreenComponent {
   }
 
   openModal() {
-    this.modalRef = this.modalService.open(ModalComponent)
+    this.modalRef = this.modalService.open(ModalComponent);
   }
 
   loadMode() {
     (this.document.querySelector('app-root') as HTMLElement).style.color =
       this.mode.text;
     document.body.style.backgroundImage = this.mode.background;
+  }
+
+  handleLanguage(language: selectedLanguage) {
+    console.log(language);
+    this.translate.use(language.name);
   }
 }

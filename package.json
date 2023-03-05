@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^15.0.0",
+    "@angular/animations": "^15.2.1",
     "@angular/cdk": "^15.1.2",
     "@angular/common": "^15.0.0",
     "@angular/compiler": "^15.0.0",
@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "angular-gtag": "^1.0.4",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",

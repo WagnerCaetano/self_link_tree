@@ -1,0 +1,39 @@
+button,
+button:hover,
+button:focus,
+button:before,
+button:after {
+  box-shadow: none;
+}
+
+li button {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+ul {
+  width: 7.5rem !important;
+  min-width: 7.5rem !important;
+}
+
+button img {
+    width: 20px;
+    height: 20px;
+}
+
+.dark, .dark:hover, .dark:focus, .dark.after, .dark.before {
+  button {
+    color: #e3e3e3 !important;
+  }
+  background-color: rgb(58, 58, 58) !important;
+  border-color: rgb(58, 58, 58) !important;
+}
+
+.light, .light:hover, .light:focus, .light.after, .light.before {
+  button {
+    color: #1c1c1c !important;
+    background-color: rgb(197, 197, 197) !important;
+    border-color: rgb(190, 190, 190) !important;
+  }
+}

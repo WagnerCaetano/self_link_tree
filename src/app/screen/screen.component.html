@@ -1,38 +1,29 @@
-<div class="switch" (click)="changeMode()">
-  <i class="bi bi-lightbulb"></i>
+<div class="first-row">
+  <div class="switch"><i (click)="changeMode()" class="bi bi-lightbulb"></i></div>
+  <div class="dropdown"><app-dropdown (languageEmitter)="handleLanguage($event)" [mode]="mode" ></app-dropdown></div>
 </div>
 
-<div
-  class="container"
-  [ngStyle]="
+<div class="container" [ngStyle]="
     window.innerWidth > 900
       ? {
           'background-color': mode.bg_container,
           'border-color': mode.border_container
         }
       : {}
-  "
->
+  ">
   <h1 class="title">Wagner Caetano</h1>
   <img src="https://wagnercaetano.com/wp-content/uploads/data/profile.jpg" alt="" />
   <h2 class="subtitle">Fullstack Developer</h2>
 
   <div class="card-wrapper">
-    <div
-      class="card"
-      (mouseover)="hover = i"
-      (mouseleave)="hover = -1"
-      [ngStyle]="
+    <div class="card" (mouseover)="hover = i" (mouseleave)="hover = -1" [ngStyle]="
         hover === i
           ? { 'background-color': mode.hover_card }
           : { 'background-color': mode.card }
-      "
-      *ngFor="let link of links; let i = index"
-      (click)="navigate(link.url)"
-      onclick="dataLayer.push('event', 'click_link', {'url': $event})"
-    >
+      " *ngFor="let link of links; let i = index" (click)="navigate(link.url)"
+      onclick="dataLayer.push('event', 'click_link', {'url': $event})">
       <i class="bi bi-{{ link.name }}"></i>
-      <p>{{ link.description }}</p>
+      <p>{{ link.description | translate }}</p>
     </div>
   </div>
 </div>

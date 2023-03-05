@@ -1,0 +1,18 @@
+<div mdbDropdown class="dropdown">
+  
+  <button
+    class="btn dropdown-toggle"
+    type="button"
+    id="dropdownMenu2"
+    mdbDropdownToggle
+    aria-expanded="false"
+    [ngStyle]="mode && mode.card ? {'background-color': mode.card, 'border-color': mode.border_container, 'color': mode.text} : {} "
+  >
+  <img [src]="selectedLanguage.image" alt="">
+  {{ selectedLanguage.language }}
+  </button>
+  <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenu2" [ngClass]="{'dark': mode == dark, 'light': mode != dark}">
+    <li><button class="dropdown-item" type="button" (click)="changeLanguage(BRAZIL)" > <img [src]="BRAZIL.image">{{BRAZIL.language}}</button></li>
+    <li><button class="dropdown-item" type="button" (click)="changeLanguage(USA)"> <img [src]="USA.image">{{USA.language}}</button></li>
+  </ul>
+</div>
