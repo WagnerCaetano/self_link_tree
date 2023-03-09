@@ -32,7 +32,7 @@ export function createTranslateLoader(http: HttpClient) {
     MdbDropdownModule,
     HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'pt',
+      defaultLanguage: 'en',
       loader: {
           provide: TranslateLoader,
           useFactory: (createTranslateLoader),
